@@ -1,0 +1,10 @@
+{
+  "case_id":"CL-003",
+  "question":"Is Service X deprecated?",
+  "gold":{"decision":"CONDITIONAL","requires_human_review":false,"allowed_action":"ANSWER_WITH_WARNING","required_reason_codes":["MATERIAL_CONTRADICTION"]},
+  "evidence":[
+    {"source_id":"roadmap","claim_key":"service x deprecation status","claim_value":"deprecation proposed","observed_at":"2026-08-15T00:00:00Z","source_state":"PROPOSAL","authority":2,"severity":1},
+    {"source_id":"production","claim_key":"service x deprecation status","claim_value":"active and supported","observed_at":"2026-09-10T00:00:00Z","source_state":"IMPLEMENTATION","authority":3,"severity":1}
+  ],
+  "relations":[]
+}
