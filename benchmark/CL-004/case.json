@@ -1,0 +1,11 @@
+{
+  "case_id":"CL-004",
+  "question":"Can Version 3 be deployed to production?",
+  "gold":{"decision":"UNSAFE","requires_human_review":true,"allowed_action":"BLOCK_AUTOMATION","required_reason_codes":["RECENT_OPERATIONAL_CHALLENGE"]},
+  "evidence":[
+    {"source_id":"release-approval","claim_key":"version 3 production readiness","claim_value":"approved for production","observed_at":"2026-09-01T00:00:00Z","source_state":"APPROVED_DECISION","authority":5,"severity":1},
+    {"source_id":"incident","claim_key":"version 3 production readiness","claim_value":"rollback required after production failure","observed_at":"2026-09-14T00:00:00Z","source_state":"OPERATIONAL_OBSERVATION","authority":4,"severity":1},
+    {"source_id":"current-deployment","claim_key":"version 3 production readiness","claim_value":"version 2 currently deployed","observed_at":"2026-09-15T00:00:00Z","source_state":"IMPLEMENTATION","authority":3,"severity":1}
+  ],
+  "relations":[{"from_source_id":"incident","to_source_id":"release-approval","type":"CHALLENGES","reason":"A production failure and rollback occurred after the approval."}]
+}
