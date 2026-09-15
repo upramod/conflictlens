@@ -1,0 +1,10 @@
+{
+  "case_id":"CL-009",
+  "question":"Should new records use Schema V2?",
+  "gold":{"decision":"SAFE","requires_human_review":false,"allowed_action":"ANSWER"},
+  "evidence":[
+    {"source_id":"old-guidance","claim_key":"new record schema","claim_value":"Schema V1","observed_at":"2025-06-01T00:00:00Z","source_state":"GUIDANCE","authority":2,"severity":1},
+    {"source_id":"new-guidance","claim_key":"new record schema","claim_value":"Schema V2","observed_at":"2026-08-15T00:00:00Z","source_state":"APPROVED_DECISION","authority":5,"severity":1}
+  ],
+  "relations":[{"from_source_id":"new-guidance","to_source_id":"old-guidance","type":"SUPERSEDES","reason":"The Schema V2 decision explicitly retires Schema V1 guidance for new records."}]
+}
