@@ -1,0 +1,20 @@
+{
+  "case_id": "CL-001",
+  "question": "Which API should a new service use to create a customer account?",
+  "gold": {
+    "decision": "UNSAFE",
+    "requires_human_review": true,
+    "allowed_action": "BLOCK_AUTOMATION",
+    "required_reason_codes": ["NO_CLEAR_SUPERSESSION", "RECENT_OPERATIONAL_CHALLENGE"]
+  },
+  "evidence": [
+    {"source_id":"architecture","claim_key":"new customer account creation api","claim_value":"API A","observed_at":"2025-11-18T00:00:00Z","source_state":"APPROVED_DECISION","authority":5,"severity":1},
+    {"source_id":"wiki","claim_key":"new customer account creation api","claim_value":"API B","observed_at":"2026-08-31T00:00:00Z","source_state":"GUIDANCE","authority":2,"severity":1},
+    {"source_id":"production","claim_key":"new customer account creation api","claim_value":"API A","observed_at":"2026-09-05T00:00:00Z","source_state":"IMPLEMENTATION","authority":3,"severity":1},
+    {"source_id":"discussion","claim_key":"new customer account creation api","claim_value":"API B not production-ready","observed_at":"2026-09-06T00:00:00Z","source_state":"DISCUSSION","authority":1,"severity":1},
+    {"source_id":"readiness","claim_key":"new customer account creation api","claim_value":"API B not approved","observed_at":"2026-09-04T00:00:00Z","source_state":"OPERATIONAL_REVIEW","authority":4,"severity":1}
+  ],
+  "relations": [
+    {"from_source_id":"readiness","to_source_id":"wiki","type":"CHALLENGES","reason":"The readiness review has not approved API B for production."}
+  ]
+}
