@@ -1,0 +1,11 @@
+{
+  "case_id": "CL-002",
+  "question": "Can this service retain customer data for 90 days?",
+  "gold": {"decision":"UNSAFE","requires_human_review":true,"allowed_action":"BLOCK_AUTOMATION","required_reason_codes":["NO_CLEAR_SUPERSESSION","AUTHORITY_AMBIGUITY"]},
+  "evidence": [
+    {"source_id":"policy","claim_key":"customer data retention","claim_value":"30 days maximum","observed_at":"2026-08-20T00:00:00Z","source_state":"APPROVED_DECISION","authority":5,"severity":1},
+    {"source_id":"wiki","claim_key":"customer data retention","claim_value":"90 days allowed","observed_at":"2025-03-10T00:00:00Z","source_state":"GUIDANCE","authority":2,"severity":1},
+    {"source_id":"config","claim_key":"customer data retention","claim_value":"90 days allowed","observed_at":"2026-09-01T00:00:00Z","source_state":"IMPLEMENTATION","authority":3,"severity":1}
+  ],
+  "relations": []
+}
