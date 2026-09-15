@@ -1,0 +1,10 @@
+{
+  "case_id":"CL-005",
+  "question":"Which authentication method should new applications use?",
+  "gold":{"decision":"SAFE","requires_human_review":false,"allowed_action":"ANSWER"},
+  "evidence":[
+    {"source_id":"old-decision","claim_key":"new application authentication","claim_value":"client secret","observed_at":"2025-02-01T00:00:00Z","source_state":"APPROVED_DECISION","authority":5,"severity":1},
+    {"source_id":"new-decision","claim_key":"new application authentication","claim_value":"managed identity","observed_at":"2026-07-01T00:00:00Z","source_state":"APPROVED_DECISION","authority":5,"severity":1}
+  ],
+  "relations":[{"from_source_id":"new-decision","to_source_id":"old-decision","type":"SUPERSEDES","reason":"The July decision explicitly replaces client secrets for new applications."}]
+}
