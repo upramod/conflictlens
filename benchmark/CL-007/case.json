@@ -1,0 +1,10 @@
+{
+  "case_id":"CL-007",
+  "question":"Can this feature be enabled globally?",
+  "gold":{"decision":"UNSAFE","requires_human_review":true,"allowed_action":"BLOCK_AUTOMATION"},
+  "evidence":[
+    {"source_id":"design","claim_key":"global feature enablement","claim_value":"global enablement intended","observed_at":"2026-07-15T00:00:00Z","source_state":"APPROVED_DECISION","authority":5,"severity":1},
+    {"source_id":"pilot","claim_key":"global feature enablement","claim_value":"global enablement unsafe after pilot failures","observed_at":"2026-09-12T00:00:00Z","source_state":"OPERATIONAL_REVIEW","authority":4,"severity":1}
+  ],
+  "relations":[{"from_source_id":"pilot","to_source_id":"design","type":"CHALLENGES","reason":"Pilot failures materially challenge global enablement."}]
+}
