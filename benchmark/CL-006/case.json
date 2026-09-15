@@ -1,0 +1,11 @@
+{
+  "case_id":"CL-006",
+  "question":"Does this endpoint require authentication?",
+  "gold":{"decision":"SAFE","requires_human_review":false,"allowed_action":"ANSWER"},
+  "evidence":[
+    {"source_id":"api-spec","claim_key":"endpoint authentication requirement","claim_value":"authentication required","observed_at":"2026-08-10T00:00:00Z","source_state":"APPROVED_DECISION","authority":5,"severity":1},
+    {"source_id":"implementation","claim_key":"endpoint authentication requirement","claim_value":"authentication required","observed_at":"2026-09-10T00:00:00Z","source_state":"IMPLEMENTATION","authority":3,"severity":1},
+    {"source_id":"operations","claim_key":"endpoint authentication requirement","claim_value":"authentication required","observed_at":"2026-09-14T00:00:00Z","source_state":"OPERATIONAL_OBSERVATION","authority":4,"severity":1}
+  ],
+  "relations":[]
+}
