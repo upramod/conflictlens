@@ -1,22 +1,16 @@
-import json
 from pathlib import Path
 
-from conflictlens.engine import evaluate
-from conflictlens.models import EvaluationRequest
+from conflictlens.benchmark import run_benchmark
 
 
-def test_cl001_matches_gold() -> None:
-    case_path = Path(__file__).parents[1] / "benchmark" / "CL-001" / "case.json"
-    case = json.loads(case_path.read_text(encoding="utf-8"))
-    request = EvaluationRequest(
-        question=case["question"],
-        evidence=case["evidence"],
-        relations=case["relations"],
-    )
-    result = evaluate(request)
-    gold = case["gold"]
-
-    assert result.decision.value == gold["decision"]
-    assert result.requires_human_review == gold["requires_human_review"]
-    assert result.allowed_action.value == gold["allowed_action"]
-    assert set(gold["required_reason_codes"]).issubset(result.reason_codes)
+def test_locked_benchmark() -> None:
+    root = Path(__file__).parents[1] / "benchmark"
+    results = run_benchmark(root)
+    assert len(results) == 10
+    failures = [
+        f"{r.case_id}: expected {r.expected_decision}/{r.expected_action}, "
+        f"got {r.actual_decision}/{r.actual_action}"
+        for r in results
+        if not r.passed
+    ]
+    assert not failures, "\n" + "\n".join(failures)
