@@ -1,0 +1,10 @@
+{
+  "case_id":"CL-008",
+  "question":"Who owns Service Z?",
+  "gold":{"decision":"CONDITIONAL","requires_human_review":false,"allowed_action":"ANSWER_WITH_WARNING"},
+  "evidence":[
+    {"source_id":"service-catalog","claim_key":"service z owner","claim_value":"Team Alpha","observed_at":"2026-05-01T00:00:00Z","source_state":"GUIDANCE","authority":3,"severity":1},
+    {"source_id":"oncall-doc","claim_key":"service z owner","claim_value":"Team Beta","observed_at":"2026-09-01T00:00:00Z","source_state":"GUIDANCE","authority":3,"severity":1}
+  ],
+  "relations":[]
+}
