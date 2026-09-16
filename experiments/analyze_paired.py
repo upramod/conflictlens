@@ -109,7 +109,7 @@ def parse_declared_label(text: str) -> str | None:
                   if line.strip()), "")
     if first.startswith("**") and first.endswith("**"):
         first = first[2:-2].strip()
-    return first.upper() if re.fullmatch(r"SAFE|CONDITIONAL|UNSAFE", first, re.I) else None
+    return first.upper() if re.fullmatch(r"SAFE|CONDITIONAL|UNSAFE", first, re.IGNORECASE) else None
 
 
 def legacy_label(text: str) -> str | None:
@@ -143,7 +143,7 @@ def validate_rows(rows: list[dict], cases: dict[str, dict], trials: int) -> list
         response_ids.add(rid)
         text = row.get("output_text")
         if not isinstance(text, str):
-            raise ValueError(f"Row {line}: output_text must be text")
+            raise TypeError(f"Row {line}: output_text must be text")
         if row.get("predicted") != legacy_label(text):
             raise ValueError(f"Row {line}: recorded label does not match the legacy parser")
         row["declared"] = parse_declared_label(text)
@@ -340,9 +340,11 @@ def main() -> None:
         cases = build_cases(ROOT)
         rows = validate_rows(rows, cases, args.trials)
         sys.path.insert(0, str(ROOT / "src"))
+        import pydantic
+
         from conflictlens.engine import evaluate
         from conflictlens.models import EvaluationRequest
-        import pydantic
+
         engine = {cid: evaluate(EvaluationRequest(**request_payload(case))).model_dump(mode="json")
                   for cid, case in cases.items()}
         summary, pairs, changes = analyze(rows, cases, engine, args.resamples, args.seed)
