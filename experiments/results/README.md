@@ -1,5 +1,15 @@
 # Experimental results
 
+## Audit notice, 2026-09-16 UTC
+
+Read [the paired analysis and measurement audit](PAIRED_AUDIT_20260916.md) before using these scores in a manuscript. An explanation-wide parser error affects one row. Derived declared-label agreement is **542/800 (67.750%)**, rather than the legacy **543/800**. Raw responses and original stored labels remain unchanged.
+
+The 123 UNSAFE-gold/SAFE-prediction rows are label disagreements, not verified dangerous actions. Some SAFE responses explicitly deny authorization. The 160 case IDs contain 127 distinct reconstructed inputs from ten parent seeds. This round is an exploratory pilot. Do not claim established action-safety improvements or semantic/temporal robustness from these scores.
+
+Use `python experiments/analyze_paired.py <raw-jsonl>` for the audited paired comparison. It makes no API calls and writes separate derived artifacts. The script verifies the frozen engine, schema, generator and seed hashes. Independent human label review and an actual underlying-model snapshot are still needed.
+
+## Preserved original result summary
+
 Raw model outputs are retained as immutable JSONL experiment records. Do not edit rows after a run. Each row records case ID, trial, gold label, predicted label, response ID, returned model identifier, raw output text, and token usage.
 
 ## GPT-5.6 Luna baseline, 2026-09-15
