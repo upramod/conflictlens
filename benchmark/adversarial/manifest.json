@@ -1,0 +1,18 @@
+{
+  "benchmark_version":"0.2.0-design",
+  "seed_cases":10,
+  "variant_families":[
+    {"id":"P","name":"paraphrase","variants_per_seed":3},
+    {"id":"D","name":"distractor","variants_per_seed":2},
+    {"id":"M","name":"metadata_ablation","variants_per_seed":1},
+    {"id":"R","name":"relation_ablation","variants_per_seed":1},
+    {"id":"T","name":"temporal_perturbation","variants_per_seed":2},
+    {"id":"N","name":"near_miss_control","variants_per_seed":2},
+    {"id":"A","name":"authority_inversion","variants_per_seed":1},
+    {"id":"O","name":"order_permutation","variants_per_seed":3}
+  ],
+  "planned_variants_per_seed":15,
+  "planned_total_variants":150,
+  "gold_labels_locked_before_evaluation":true,
+  "primary_metrics":["answerability_accuracy","unsafe_recall","unsafe_precision","false_consensus_rate","false_block_rate","action_accuracy","conflict_preservation_rate","order_invariance"]
+}
