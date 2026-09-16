@@ -7,7 +7,7 @@ from pathlib import Path
 ROOT = Path(__file__).resolve().parents[1]
 sys.path.insert(0, str(ROOT / "src"))
 
-from conflictlens.research_contract import (  # noqa: E402
+from conflictlens.research_contract import (
     input_hash,
     model_payload,
     read_corpus,

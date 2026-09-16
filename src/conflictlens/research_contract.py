@@ -151,9 +151,11 @@ def validate_assessment(task: TaskInput, assessment: Assessment) -> None:
         ids = {c.source_id for c in assessment.basis.conflict.citations}
         if len(ids) < 2:
             raise ValueError("a multi-source disagreement needs citations to at least two sources")
-    if assessment.action_permission in {"PERMITTED", "REQUIRES_APPROVAL", "PROHIBITED"}:
-        if not assessment.basis.action_permission.citations:
-            raise ValueError("a permission decision needs source evidence")
+    needs_permission_basis = assessment.action_permission in {
+        "PERMITTED", "REQUIRES_APPROVAL", "PROHIBITED"
+    }
+    if needs_permission_basis and not assessment.basis.action_permission.citations:
+        raise ValueError("a permission decision needs source evidence")
 
 
 def _unique_object(pairs: list[tuple[str, Any]]) -> dict[str, Any]:

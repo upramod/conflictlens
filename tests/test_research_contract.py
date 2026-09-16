@@ -228,13 +228,13 @@ def reviewed_fixture(corpus, rubric):
     target = data["cases"][0]
     target["split"] = "held_out"
     for reviewer in ["test-person-1", "test-person-2"]:
-        target["reviews"].append(dict(
-            reviewer_id=reviewer, is_human=True, independent_of_case_author=True,
-            blinded_to_candidate_and_outputs=True,
-            input_sha256=input_hash(TaskInput.model_validate(target["input"])),
-            rubric_sha256=rubric_hash(rubric), reviewed_at="2026-09-16T00:00:00Z",
-            assessment=target["candidate"],
-        ))
+        target["reviews"].append({
+            "reviewer_id": reviewer, "is_human": True, "independent_of_case_author": True,
+            "blinded_to_candidate_and_outputs": True,
+            "input_sha256": input_hash(TaskInput.model_validate(target["input"])),
+            "rubric_sha256": rubric_hash(rubric), "reviewed_at": "2026-09-16T00:00:00Z",
+            "assessment": target["candidate"],
+        })
     return data
 
 
